@@ -1,22 +1,18 @@
+# Android Build Dockerfile for Parafuzo.
 #
-# Android Build Dockerfile
-#
+# This is a fork from:
 # https://github.com/lukin0110/docker-android-build
-#
-# Version: 0.0.1
 #
 
 # Pull base image.
 FROM ubuntu:14.04
-#FROM debian:wheezy
-MAINTAINER Maarten Huijsmans <maarten.huijsmans@gmail.com>
 
+MAINTAINER Parafuzo <dev@parafuzo.com>
 
 # Update, upgrade and install packages
 RUN \
     apt-get update && \
     apt-get -y install curl unzip python-software-properties software-properties-common
-
 
 # Install Oracle Java JDK
 # https://www.digitalocean.com/community/tutorials/how-to-install-java-on-ubuntu-with-apt-get
@@ -27,7 +23,6 @@ RUN \
     apt-get update && \
     apt-get install -y oracle-java7-installer
 
-
 # Install Android SDK
 # https://developer.android.com/sdk/index.html#Other
 RUN \
@@ -35,7 +30,6 @@ RUN \
     curl -L -O http://dl.google.com/android/android-sdk_r24.3.3-linux.tgz && \
     tar xf android-sdk_r24.3.3-linux.tgz && \
     rm android-sdk_r24.3.3-linux.tgz
-
 
 # Install Android NDK
 # https://developer.android.com/tools/sdk/ndk/index.html
@@ -53,7 +47,6 @@ RUN cd /usr/local && \
     curl -L https://services.gradle.org/distributions/gradle-2.5-bin.zip -o gradle-2.5-bin.zip && \
     unzip gradle-2.5-bin.zip
 
-
 # Update & Install Android Tools
 # Cloud message, billing, licensing, play services, admob, analytics
 RUN \
@@ -62,13 +55,12 @@ RUN \
     echo y | /usr/local/android-sdk-linux/tools/android update sdk --filter android-19 --no-ui --force -a && \
     echo y | /usr/local/android-sdk-linux/tools/android update sdk --filter android-21 --no-ui --force -a && \
     echo y | /usr/local/android-sdk-linux/tools/android update sdk --filter android-22 --no-ui --force -a && \
+    echo y | /usr/local/android-sdk-linux/tools/android update sdk --filter android-23 --no-ui --force -a && \
     echo y | /usr/local/android-sdk-linux/tools/android update sdk --filter extra --no-ui --force -a
-
 
 # Set PATH
 ENV ANDROID_HOME=/usr/local/android-sdk-linux ANDROID_NDK_HOME=/usr/local/android-ndk-r10e JAVA_HOME=/usr/lib/jvm/java-7-oracle GRADLE_HOME=/usr/local/gradle-2.5
 ENV PATH $PATH:$ANDROID_HOME/tools:$ANDROID_NDK_HOME/platform-tools:$ANDROID_NDK_HOME:$GRADLE_HOME/bin
-
 
 # Flatten the image
 # https://intercityup.com/blog/downsizing-docker-containers.html
