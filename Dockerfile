@@ -56,7 +56,8 @@ RUN \
     echo y | /usr/local/android-sdk-linux/tools/android update sdk --filter android-21 --no-ui --force -a && \
     echo y | /usr/local/android-sdk-linux/tools/android update sdk --filter android-22 --no-ui --force -a && \
     echo y | /usr/local/android-sdk-linux/tools/android update sdk --filter android-23 --no-ui --force -a && \
-    echo y | /usr/local/android-sdk-linux/tools/android update sdk --filter extra --no-ui --force -a
+    echo y | /usr/local/android-sdk-linux/tools/android update sdk --filter extra --no-ui --force -a \
+    echo y | /usr/local/android-sdk-linux/tools/android update sdk --all --filter platform-tools,build-tools-23.0.2 --no-ui --force
 
 # Set PATH
 ENV ANDROID_HOME=/usr/local/android-sdk-linux ANDROID_NDK_HOME=/usr/local/android-ndk-r10e JAVA_HOME=/usr/lib/jvm/java-7-oracle GRADLE_HOME=/usr/local/gradle-2.5
