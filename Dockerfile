@@ -12,7 +12,7 @@ MAINTAINER Parafuzo <dev@parafuzo.com>
 # Update, upgrade and install packages
 RUN \
     apt-get update && \
-    apt-get -y install curl unzip python-software-properties software-properties-common lib32stdc++6 lib32z1
+    apt-get -y install curl unzip python-software-properties software-properties-common lib32stdc++6 lib32z1 curl
 
 # Install Oracle Java JDK
 # https://www.digitalocean.com/community/tutorials/how-to-install-java-on-ubuntu-with-apt-get
