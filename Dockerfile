@@ -12,7 +12,7 @@ MAINTAINER Parafuzo <dev@parafuzo.com>
 # Update, upgrade and install packages
 RUN \
     apt-get update && \
-    apt-get -y install curl unzip python-software-properties software-properties-common lib32stdc++6 lib32z1 curl
+    apt-get -y install curl unzip python-software-properties software-properties-common lib32stdc++6 lib32z1
 
 # Install Oracle Java JDK
 # https://www.digitalocean.com/community/tutorials/how-to-install-java-on-ubuntu-with-apt-get
@@ -67,7 +67,7 @@ ENV PATH $PATH:$ANDROID_HOME/tools:$ANDROID_NDK_HOME/platform-tools:$ANDROID_NDK
 # https://intercityup.com/blog/downsizing-docker-containers.html
 # Cleaning APT
 RUN \
-    apt-get remove -y curl unzip python-software-properties software-properties-common && \
+    apt-get remove -y unzip python-software-properties software-properties-common && \
     apt-get clean autoclean && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
