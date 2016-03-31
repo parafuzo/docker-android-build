@@ -44,8 +44,8 @@ RUN \
 
 # Install Gradle
 RUN cd /usr/local && \
-    curl -L https://services.gradle.org/distributions/gradle-2.5-bin.zip -o gradle-2.5-bin.zip && \
-    unzip gradle-2.5-bin.zip
+    curl -L https://services.gradle.org/distributions/gradle-2.10-bin.zip -o gradle-2.10-bin.zip && \
+    unzip gradle-2.10-bin.zip
 
 # Update & Install Android Tools
 # Cloud message, billing, licensing, play services, admob, analytics
